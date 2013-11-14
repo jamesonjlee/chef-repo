@@ -1,0 +1,28 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagabondfile.describe do
+    defaults do
+        template "ubuntu_1204"
+    end
+    nodes do
+        mongodb1 do
+            environment "production"
+        end
+        mongodb2 do
+            environment "production"
+        end
+        mongodb3 do
+            environment "production"
+        end
+    end
+    clusters do
+        mongodbs ["mongodb1", "mongodb2"]
+    end
+    server do
+        zero true
+        enabled true
+        auto_upload true
+        librarian false
+        berkshelf true
+    end
+end
